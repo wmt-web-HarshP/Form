@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student List</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      h2,
+      h1 {
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Student List</h2>
+    <% if (new_table.length > 0) { %>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mno</th>
+        <th>Actions</th>
+      </tr>
+      <% for (let i = 0; i < new_table.length; i++) { %>
+      <tr>
+        <td><%- new_table[i].id %></td>
+        <td><%- new_table[i].name %></td>
+        <td><%- new_table[i].email %></td>
+        <td><%- new_table[i].mno %></td>
+        <td>
+          <a href="/update-Student?id=<%- new_table[i].id %>">Update</a>
+          <a href="/delete-Student?id=<%- new_table[i].id %>">Delete</a>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+    <% } else { %>
+    <h1>Student Data not found</h1>
+    <% } %>
+  </body>
+</html>
